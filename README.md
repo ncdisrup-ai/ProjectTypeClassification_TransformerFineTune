@@ -1,10 +1,12 @@
-# ProjectTypeClassification
-Classify Project type with NLP and ML
+# ProjectTypeClassification Finetuning DistilBert
+Classify Project type with fine tuning a transformer model (DistilBert)
 
 ## 🤔 What is this?
 **Description:**  How to know the type of IT projects/contracts (Services) that have been carrying out in the Portuguese Public Administration?.
 In addition to project values, what type of projects have been developed and by whom? What is the competition and what type of services do they focus on? Strategic Digital Transformation Consulting; in Project Management/PMO; in Requirements Gathering/Analysis or Architecture; in Project Implementation; in Support/Maintenance; in Change Management; or in SaaS?
-It involves the research and design of Artificial Intelligence algorithms, namely Natural Language Processing (NLP) and Machine Learning (ML) that allow the extraction of relevant information, which convert textual data into vector spaces in order to be inputs into data models. ML that will classify each IT service project.
+
+It involves the research and design of Artificial Intelligence algorithms, in this project we will be fine tuning a transformer model (DistilBert) for the **Multiclass text classification** problem.
+Given a Project description the model will classify into one of the project categories out of the given list.
 
 
 ## 📚 Data
@@ -13,9 +15,9 @@ Data with the projects (to train the model and to apply the model) are in data d
  
 We are using Project Descriptions from   Portuguese Public Administration site of Contract  aggregator dataset available at [base.gov Repository](https://https://www.base.gov.pt/base4).
 
-Please bear in mind that this data has already been cleaned and processed: `ContratosAP_v10.0_All TrainPred`.
+Please bear in mind that this data has already been cleaned and processed: `ContratosAP_v5.2_TrainPred.xlsx`.
 
-Dataframe "DadosTreinoVal" has `751` rows of data to train and test.  Where each row has the following data-point:
+Dataframe `DadosTreinoVal` has `751` rows of data to train and test.  Where each row has the following data-point:
 	
     - Objeto do Contrato: Contract Object
     		 
@@ -44,15 +46,22 @@ Type of Contract to be able to classify IT project descriptions from Public Port
 
 ##  🚀 Quick Install
 
-`pip install -r requirements.txt` #install environment.
 
-copy data (in data dir) "ContratosAP_v10.0_All TrainPred" to c:\DadosAP.
+Due to the power of GPU needed i advise you to use colab with `ClassifyContratType_TransformersFineTunEx_v2_colab.ipynb`(in classification dir)
 
-run python or jupiter notebook file (in classification dir).
+copy data (in data dir) `ContratosAP_v5.2_TrainPred.xlsx` to sample_data.
+
+
+Run
 
 
 ## 📖 Documentation
 
-Please see docs dir for full documentation.
+Please see the description in .ipynb about this project.
 
-See document that explains the project (in Portuguese - from slide 24 to 43).
+
+
+
+##  🚀 Results (Applied AI vs Transformers)
+
+Having in consideration that we have few data (751 projects) to fine tune the 8 project categories, we´ve understood that distilbert focus on the categories with more data, so we only managed to obtain about 50% acurracy (for instance with Support Linear Classifier - SVC - Applied AI, with the same data to train we manage to obtain 84% acurracy).
